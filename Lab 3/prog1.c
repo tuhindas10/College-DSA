@@ -62,7 +62,7 @@ int main() {
             trans[j][i] = matrix[i][j];
         }
     }
-
+    printf("Transpose of given sparse matrix in 3-Tuple format : \n");
     threeTuple(col, row, trans);
 
     return 0;
