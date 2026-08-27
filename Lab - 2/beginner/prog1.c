@@ -57,6 +57,13 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
+    printf("***** MENU *****\n");
+    printf("1.insert a given element at specific position.\n");
+    printf("2.delete an element from a specific position of the array\n");
+    printf("3.linear search to search an element\n");
+    printf("4.traversal of the array \n");
+    printf("5.Exit\n");
+
     while(1) {
         int choice;
         printf("Enter choice : ");
