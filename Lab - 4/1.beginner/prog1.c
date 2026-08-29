@@ -155,6 +155,18 @@ struct Node *insertNode(struct Node *head) {
     return head;
 }
 
+int search(struct Node *head, int target) {
+    struct Node *temp;
+    int position = 0;
+    temp = head;
+    while(temp->next != NULL) {
+        if(temp->data == target) return position+1;
+        temp = temp->next;
+        position++;
+    }
+    return -1;
+}
+
 //count number of nodes
 int countNodes(struct Node *head) {
     struct Node *ptr = head;
@@ -193,7 +205,8 @@ int main() {
     printf("2.Deletion of an element from specific position\n");
     printf("3.Count nodes\n");
     printf("4.Traverse the linked list \n");
-    printf("5.Exit\n");
+    printf("5.Search an element\n");
+    printf("6.Exit\n");
 
     while(true) {
         int choice;
@@ -208,7 +221,13 @@ int main() {
             printf("Number of nodes : %d\n", count);
         }else if(choice == 4){
             printList(head);
-        }else if(choice == 5){
+        }else if(choice == 5){ //LAB -> 2
+            int target, pos;
+            printf("Enter number : ");
+            scanf("%d", &target);
+            pos = search(head, target);
+            printf("%d is at position %d\n", target, pos);
+        }else if(choice == 6){
             printf("Exit !\n");
             break;
         }else {
