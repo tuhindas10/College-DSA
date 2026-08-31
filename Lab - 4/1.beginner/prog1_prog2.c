@@ -31,6 +31,8 @@ struct Node *createList(int n) {
         //assign value to node
         printf("Enter data for node %d: ", i+1);
         scanf("%d", &newNode->data);
+
+        //pointing the next of newnode to null by default
         newNode->next = NULL;
 
         //connecting nodes
@@ -179,6 +181,25 @@ int countNodes(struct Node *head) {
     return count;
 }
 
+//reverse the Linked List
+struct Node * reverse(struct Node *head) {
+    struct Node *prev, *curr, *next_node;
+    prev = NULL;
+    curr = head;
+    next_node = NULL;
+    while(curr->next != NULL) {
+        next_node = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next_node;
+    }
+    curr->next = prev;
+    
+    //print the LL
+    printList(curr);
+    return curr;
+}
+
 //free nodes
 void freeNodes(struct Node *ptr) {
     struct Node *temp = ptr;
@@ -206,7 +227,8 @@ int main() {
     printf("3.Count nodes\n");
     printf("4.Traverse the linked list \n");
     printf("5.Search an element\n");
-    printf("6.Exit\n");
+    printf("6.Reverse the Linked List\n");
+    printf("7.Exit\n");
 
     while(true) {
         int choice;
@@ -228,6 +250,8 @@ int main() {
             pos = search(head, target);
             printf("%d is at position %d\n", target, pos);
         }else if(choice == 6){
+            head = reverse(head);
+        }else if(choice == 7){
             printf("Exit !\n");
             break;
         }else {
