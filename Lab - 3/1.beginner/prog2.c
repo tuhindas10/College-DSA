@@ -15,7 +15,6 @@ void readMatrix(int a[20][3])
 
 void displayMatrix(int a[40][3])
 {
-    printf("\nR\tC\tElement\n");
 
     for (int i = 0; i <= a[0][2]; i++)
     {

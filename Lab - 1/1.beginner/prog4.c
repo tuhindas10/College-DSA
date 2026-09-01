@@ -34,17 +34,23 @@ int main() {
     printf("*** MENU ***\n");
     printf("1. sum\n");
     printf("2. multiplication\n");
+    printf("3. Exit\n");
 
-    int n;
-    printf("Enter your choice : ");
-    scanf("%d", &n);
+    while(1) {
+        int n;
+        printf("Enter your choice : ");
+        scanf("%d", &n);
 
-    if(n == 1) {
-        sumComplex(c1.real, c1.img, c2.real, c2.img);
-    }else if(n == 2) {
-        mulComplex(&c1.real, &c1.img, &c2.real, &c2.img);
-    }else {
-        printf("Not valid");
+        if(n == 1) {
+            sumComplex(c1.real, c1.img, c2.real, c2.img);
+        }else if(n == 2) {
+            mulComplex(&c1.real, &c1.img, &c2.real, &c2.img);
+        }else if(n == 3) {
+            printf("Exit!\n");
+            break;
+        }else {
+            printf("Not valid");
+        }
     }
     return 0;
 }

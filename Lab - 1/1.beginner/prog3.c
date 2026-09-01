@@ -1,65 +1,64 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
 
-struct employee {
-    int empID;
-    char name[100];
-    char designation[100];
+struct Employee
+{
+    int emp_id;
+    char name[50];
+    char designation[50];
     float basic_salary;
-    int hra;
-    int da;
-    float gross_salary;
+    float hra_percent;
+    float da_percent;
 };
 
-int main() {
-    struct employee emp[100]; 
-    int n;
-    printf("Enter no. of employees : ");
+int main()
+{
+    struct Employee emp[100];
+    int n, i;
+    float hra, da, gross_salary;
+
+    printf("Enter no. of employees: ");
     scanf("%d", &n);
 
-    //store employee information
+    for (i = 0; i < n; i++)
+    {
+        printf("\nEnter employee %d information:\n", i + 1);
 
-    for(int i=0; i<n; i++) {
-        printf("Enter employee %d information : \n", i+1);
+        printf("Enter Employee ID: ");
+        scanf("%d", &emp[i].emp_id);
 
-        //employee id
-        printf("Enter employee ID : ");
-        scanf(" %d", &emp[i].empID);
-
-        //name
-        printf("Enter name : ");
+        printf("Enter Name: ");
         scanf(" %[^\n]", emp[i].name);
 
-        //designation
-        printf("Enter Designation : ");
+        printf("Enter Designation: ");
         scanf(" %[^\n]", emp[i].designation);
 
-        //salary
-        printf("Enter salary : ");
+        printf("Enter Basic Salary: ");
         scanf("%f", &emp[i].basic_salary);
 
-        //HRA
-        printf("Enter hra : ");
-        scanf("%d", &emp[i].hra);
+        printf("Enter HRA %%: ");
+        scanf("%f", &emp[i].hra_percent);
 
-        //DA
-        printf("Enter da : ");
-        scanf("%d", &emp[i].da);
-
-        emp[i].gross_salary = emp[i].basic_salary + emp[i].hra + emp[i].da;
+        printf("Enter DA %%: ");
+        scanf("%f", &emp[i].da_percent);
     }
 
-    //return employee information
-    printf("Employee Information : \n");
-    for(int i=0; i<n; i++) {
-        printf("Information of %d employee : \n", i+1);
-        printf("emp-id : %d\n", emp[i].empID);
-        printf("Name : %s\n", emp[i].name);
-        printf("Designation : %s\n", emp[i].designation);
-        printf("Basic Salary : %f\n", emp[i].basic_salary);
-        printf("HRA : %d %%\n", emp[i].hra);
-        printf("DA : %d %%\n", emp[i].da);
-        printf("Gross Salary : %f\n", emp[i].gross_salary);
+    printf("\n\nEmployee Information:\n");
+
+    for (i = 0; i < n; i++)
+    {
+        hra = (emp[i].basic_salary * emp[i].hra_percent) / 100;
+        da = (emp[i].basic_salary * emp[i].da_percent) / 100;
+        gross_salary = emp[i].basic_salary + hra + da;
+
+        printf("\nEmployee %d\n", i + 1);
+        printf("Employee ID: %d\n", emp[i].emp_id);
+        printf("Name: %s\n", emp[i].name);
+        printf("Designation: %s\n", emp[i].designation);
+        printf("Basic Salary: %.2f\n", emp[i].basic_salary);
+        printf("HRA %%: %.2f%%\n", emp[i].hra_percent);
+        printf("DA %%: %.2f%%\n", emp[i].da_percent);
+        printf("Gross Salary: %.2f\n", gross_salary);
     }
+
     return 0;
 }
